@@ -94,4 +94,13 @@ class User extends Authenticatable
 
         return false;
     }
+
+    /**
+     * Credencial relationship
+     * @return \Illuminate\Database\Eloquent\Relations\hasOne
+     */
+    public function credencial()
+    {
+        return $this->hasOne('Netflics\Models\Credencial');
+    }
 }

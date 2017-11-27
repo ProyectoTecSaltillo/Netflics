@@ -161,6 +161,13 @@
                                 </a>
                             </li>
 
+                            <li class="has_sub">
+                                <a href="{{ route('credenciales.index') }}" class="waves-effect">
+                                    <i class="fa fa-vcard"></i>
+                                    <span>Credenciales</span>
+                                </a>
+                            </li>
+
                         </ul>
                         <div class="clearfix"></div>
                     </div>

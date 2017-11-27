@@ -1,8 +1,9 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use Netflics\Models\User;
+use Netflics\Models\Credencial;
 use Netflics\Models\Rol;
+use Netflics\Models\User;
 
 class UsersSeeder extends Seeder
 {
@@ -26,6 +27,8 @@ class UsersSeeder extends Seeder
             ]);
         $user->rol()->associate($role)->save();
 
+        Credencial::agregarSuscripcion('1', 'mes', $user);
+
         $user = new User();
         $user->fill([
                 'nombres' => 'Josue Roberto',
@@ -36,5 +39,7 @@ class UsersSeeder extends Seeder
                 'foto' => 'imagenes/perfil_usuarios/ninja.png'
             ]);
         $user->rol()->associate($role)->save();
+
+        Credencial::agregarSuscripcion('1', 'mes', $user);
     }
 }

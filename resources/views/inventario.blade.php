@@ -5,15 +5,15 @@
 <div class="row">
     <div class="col-sm-12">
         <h4 class="page-title">Inventario</h4>
-        <p class="text-muted page-title-alt">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+        <p class="text-muted page-title-alt">Menú / Inventario</p>
     </div>
 </div>
 
 <div class="card-box table-responsive">
-    <h4 class="m-t-0 header-title"><b>Default Example</b></h4>
+    <!-- <h4 class="m-t-0 header-title"><b>Default Example</b></h4>
     <p class="text-muted font-13 m-b-30">
         Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-    </p>
+    </p> -->
 
     <div id="datatable_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4 no-footer">
         <div class="row">

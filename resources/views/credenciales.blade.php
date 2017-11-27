@@ -4,16 +4,8 @@
 <!-- Page-Title -->
 <div class="row">
     <div class="col-sm-12">
-        <div class="btn-group pull-right m-t-15">
-            <a href="{{ route('ventas.create') }}" type="button" class="btn btn-white btn-custom waves-effect waves-light">
-                <span class="btn-label">
-                    <i class="fa fa-plus"></i>
-                </span>Agregar venta
-            </a>
-        </div>
-
-        <h4 class="page-title">Ventas</h4>
-        <p class="text-muted page-title-alt">Menú / Ventas</p>
+        <h4 class="page-title">Credenciales</h4>
+        <p class="text-muted page-title-alt">Menú / Credenciales</p>
     </div>
 </div>
 
@@ -30,23 +22,37 @@
                     
                     <thead>
                         <tr role="row">
-                            <th style="width: 220px;">Cliente</th>
-                            <th style="width: 220px;">Empleado</th>
-                            <th style="width: 200px;">Película</th>
-                            <th style="width: 50px;">Monto</th>
-                            <th style="width: 140px;">Vendido</th>
+                        	<th style="width: 200px;">Cliente</th>
+                            <th style="width: 150px;">Fecha de contrato</th>
+                            <th style="width: 150px;">Fecha de vencimiento</th>
+                            <th style="width: 50px;">Renovar suscripción</th>
+                            <th style="width: 50px;">Terminar suscripción</th>
                         </tr>
                     </thead>
         
                     <tbody>
-                        @php setlocale(LC_MONETARY, 'en_US.UTF-8'); @endphp
-                        @foreach ($ventas as $venta)
+                        @foreach ($credenciales as $credencial)
                             <tr>
-                                <td> {{ $venta->user->nombreCompleto }} </td>
-                                <td> {{ $venta->empleado->nombreCompleto }} </td>
-                                <td> {{ $venta->inventario->pelicula->titulo }} </td>
-                                <td> {{ money_format('%.2n', $venta->inventario->pelicula->precio_venta) }} </td>
-                                <td> {{ $venta->created_at->diffForHumans() }} </td>
+                            	<td> {{ $credencial->user->nombreCompleto }} </td>
+                                <td> {{ $credencial->created_at->diffForHumans() }} </td>
+                                <td> {{ $credencial->fechaVencimiento($credencial->fin_vigencia) }} </td>
+                                @if($credencial->fechaVencimiento($credencial->fin_vigencia) == 'Vencida')
+                                    <td align="center">
+                                        <button class="btn btn-icon waves-effect waves-light btn-inverse update"
+                                            data-toggle="modal" data-target="#updateCredencial" data-url="{{ route('credenciales.update', $credencial->id) }}">
+                                            <i class="fa fa-check-circle-o"></i>
+                                        </button>
+                                    </td>
+                                    <td align="center"> Vencida </td>
+                                @else
+                                    <td align="center"> Vigente </td>
+                                    <td align="center">
+                                        <button class="btn btn-icon waves-effect waves-light btn-danger delete" data-title="¿ Seguro que deseas cancelarla ?"
+                                            data-toggle="modal" data-target="#deleteConfirm" data-url="{{ route('credenciales.destroy', $credencial->id) }}">
+                                            <i class="fa fa-remove"></i>
+                                        </button>
+                                    </td>
+                                @endif
                             </tr>
                         @endforeach
                     </tbody>
@@ -90,7 +96,27 @@
                 </div>
             </div>
         </div>
-    
     </div>
+
+    @include('modals.deleteConfirmModal')
+    @include('modals.updateCredencial')
+
 </div>
+@endsection
+
+@section('scripts')
+    <script>
+        $(document).ready(function() {
+            $('.delete').click(function() {
+                var url = $(this).data('url');
+                $('#formDelete').attr('action', url);
+                $('#title').text($(this).data('title'));
+            });
+
+            $('.update').click(function() {
+                var url = $(this).data('url');
+                $('#formUpdate').attr('action', url);
+            });
+        });
+    </script>
 @endsection

@@ -5,6 +5,7 @@ namespace Netflics\Http\Controllers;
 use Illuminate\Http\Request;
 use Netflics\Http\Requests\ImageRequest;
 use Netflics\Http\Requests\UserRequest;
+use Netflics\Models\Credencial;
 use Netflics\Models\Rol;
 use Netflics\Models\User;
 
@@ -59,6 +60,8 @@ class UsersController extends Controller
         $user->password = bcrypt('secret');
 
         $user->rol()->associate($request->rol)->save();
+
+        Credencial::agregarSuscripcion('1', 'mes', $user);
 
         return redirect('users')->with('success', 'Usuario creado');
     }
@@ -130,6 +133,10 @@ dd($file);
     public function destroy(User $user)
     {
         $user->delete();
+
+        $credencial = $user->credencial;
+
+        $credencial->delete();
 
         return back()->with('success', 'Usuario eliminado');
     }

@@ -13,15 +13,15 @@
         </div>
 
         <h4 class="page-title">Películas</h4>
-        <p class="text-muted page-title-alt">Panel de administración de películas!!</p>
+        <p class="text-muted page-title-alt">Menú / Películas</p>
     </div>
 </div>
 
 <div class="card-box table-responsive">
-    <h4 class="m-t-0 header-title"><b>Películas en inventario</b></h4>
+    <!-- <h4 class="m-t-0 header-title"><b>Películas en inventario</b></h4>
     <p class="text-muted font-13 m-b-30">
         En la siguiente tabla se muestran las tablas que se tienen en inventario
-    </p>
+    </p> -->
 
     <div id="datatable_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4 no-footer">
         <div class="row">

@@ -2,6 +2,7 @@
 
 namespace Netflics\Http\Controllers;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Netflics\Models\Inventario;
@@ -30,7 +31,9 @@ class RentasController extends Controller
      */
     public function create()
     {
-        $usuarios = User::all();
+        $usuarios = User::all()->filter(function ($value, $key) {
+            return $value->credencial->fin_vigencia > Carbon::now();
+        });
 
         $peliculas = Pelicula::all();
 

@@ -19,6 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('paterno', 30);
             $table->string('materno', 30);
             $table->integer('rol_id')->unsigned()->default(3);
+            $table->integer('credencial_id')->unsigned()->nullable();
             $table->string('telefono', 10)->nullable();
             $table->string('direccion', 100)->nullable();
             $table->string('foto', 100)->nullable()->default('imagenes/perfil_usuarios/ninja.png');

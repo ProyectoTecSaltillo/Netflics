@@ -13,7 +13,7 @@
         </div>
 
         <h4 class="page-title">Géneros</h4>
-        <p class="text-muted page-title-alt">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+        <p class="text-muted page-title-alt">Menú / Géneros</p>
     </div>
 </div>
 

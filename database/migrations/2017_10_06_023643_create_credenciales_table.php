@@ -16,7 +16,7 @@ class CreateCredencialesTable extends Migration
         Schema::create('credenciales', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned();
-            $table->timestamp('fin_vigencia');
+            $table->dateTime('fin_vigencia');
             $table->timestamps();
             $table->softDeletes();
 

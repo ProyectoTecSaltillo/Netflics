@@ -29,7 +29,8 @@ Route::group(['middleware' => 'auth'], function () {
 	    'generos' => 'GenerosController',
 	    'categorias' => 'CategoriasController',
 	    'ventas' => 'VentasController',
-	    'rentas' => 'RentasController'
+	    'rentas' => 'RentasController',
+	    'credenciales' => 'CredencialesController'
 	]);
 
 	// Users
