@@ -5,7 +5,7 @@
 <div class="row">
     <div class="col-sm-12">
         <h4 class="page-title">Ventas</h4>
-        <p class="text-muted page-title-alt">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+        <p class="text-muted page-title-alt">Venta / Agregar Venta</p>
     </div>
 </div>
 

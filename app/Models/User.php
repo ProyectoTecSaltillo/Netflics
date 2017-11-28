@@ -97,10 +97,10 @@ class User extends Authenticatable
 
     /**
      * Credencial relationship
-     * @return \Illuminate\Database\Eloquent\Relations\hasOne
+     * @return \Illuminate\Database\Eloquent\Relations\belongsTo
      */
     public function credencial()
     {
-        return $this->hasOne('Netflics\Models\Credencial');
+        return $this->belongsTo('Netflics\Models\Credencial');
     }
 }
